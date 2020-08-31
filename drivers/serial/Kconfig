@@ -156,4 +156,9 @@ config DRIVER_SERIAL_LPUART
 	default y
 	bool "LPUART serial driver"
 
+config DRIVER_SERIAL_VEXRISCV
+	depends on RISCV
+	default y
+	bool "VEXRISCV serial driver"
+
 endmenu

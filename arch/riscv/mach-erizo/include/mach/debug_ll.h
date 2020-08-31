@@ -30,4 +30,15 @@
 
 #include <asm/debug_ll_ns16550.h>
 
+#ifndef __ASSEMBLY__
+static inline void debug_ll_init(void)
+{
+	debug_ll_ns16550_init();
+}
+#else
+.macro	debug_ll_init
+debug_ll_ns16550_init
+.endm
+#endif
+
 #endif /* __MACH_ERIZO_DEBUG_LL__ */

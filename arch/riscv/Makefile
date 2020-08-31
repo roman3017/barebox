@@ -14,6 +14,7 @@ cflags-y += -Wall -Wstrict-prototypes \
 LDFLAGS_barebox += -nostdlib
 
 machine-$(CONFIG_MACH_ERIZO)	:= erizo
+machine-$(CONFIG_MACH_VEXRISCV)	:= vexriscv
 
 LDFLAGS_barebox += $(riscv-ldflags-y)
 

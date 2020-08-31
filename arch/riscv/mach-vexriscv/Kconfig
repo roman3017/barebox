@@ -1,0 +1,11 @@
+if MACH_VEXRISCV
+
+choice
+	prompt "Board type"
+
+config BOARD_VEXRISCV_GENERIC
+	bool "vexriscv generic board"
+
+endchoice
+
+endif

@@ -24,6 +24,11 @@ config MACH_ERIZO
 	select HAS_DEBUG_LL
 	select HAS_NMON
 
+config MACH_VEXRISCV
+	bool "vexriscv family"
+	select HAS_DEBUG_LL
+	select LINUX
+
 endchoice
 
 choice

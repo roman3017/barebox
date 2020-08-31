@@ -1,0 +1,58 @@
+/dts-v1/;
+/ {
+  model = "spinal,vexriscv";
+  compatible = "spinal,vexriscv";
+  #address-cells = <1>;
+  #size-cells = <1>;
+
+  chosen {
+    bootargs = "rootwait console=hvc0 earlycon=sbi root=/dev/mmcblk0p2 init=/sbin/init";
+    stdout-path = &uart0;
+};
+
+  memory@80000000 {
+    device_type = "memory";
+    reg = <0x80000000 0x08000000>;
+  };
+
+  reserved-memory {
+    #address-cells = <1>;
+    #size-cells = <1>;
+    ranges;
+
+    opensbi: sbi@80f80000 {
+      reg = <0x80f80000 0x80000>;
+    };
+  };
+
+  cpus {
+    #address-cells = <1>;
+    #size-cells = <0>;
+    timebase-frequency = <100000000>;
+
+    cpu@0 {
+      device_type = "cpu";
+      compatible = "riscv";
+      reg = <0>;
+			clock-frequency = <100000000>;
+    };
+
+    cpu@1 {
+      device_type = "cpu";
+      compatible = "riscv";
+      reg = <1>;
+			clock-frequency = <100000000>;
+    };
+  };
+
+  uart0: uart@10010000 {
+    compatible = "spinal,serial";
+    reg = <0x10010000 0x20>;
+    clock-frequency = <100000000>;
+  };
+
+  mac0: mac@10040000 {
+    compatible = "spinal,lib_mac";
+    reg = <0x10040000 0x1000>;
+  };
+};

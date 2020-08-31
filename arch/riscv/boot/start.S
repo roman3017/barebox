@@ -28,7 +28,7 @@
 
 .globl _start
 _start:
-	debug_ll_ns16550_init
+	debug_ll_init
 
 	riscv_nmon
 

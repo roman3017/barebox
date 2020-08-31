@@ -23,11 +23,17 @@
 
 static uint64_t rdcycle_read(void)
 {
-	register unsigned long __v;
+	u32 lo, hi, tmp;
 
-	__asm__ __volatile__ ("rdcycle %0" : "=r" (__v));
+	__asm__ __volatile__ (
+		"1:\n"
+		"rdtimeh %0\n"
+		"rdtime %1\n"
+		"rdtimeh %2\n"
+		"bne %0, %2, 1b"
+		: "=&r" (hi), "=&r" (lo), "=&r" (tmp));
 
-	return __v;
+	return ((u64)hi << 32) | lo;
 }
 
 static struct clocksource rdcycle_cs = {
