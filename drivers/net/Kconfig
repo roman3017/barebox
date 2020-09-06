@@ -240,6 +240,12 @@ config DRIVER_NET_SMC91111
 	  This option enables support for the SMSC LAN91C111
 	  ethernet chip.
 
+config DRIVER_NET_SPINAL
+	bool "spinal MAC Ethernet driver"
+	help
+	  This option enables support for the Spinal MAC Ethernet
+	  controller
+
 config DRIVER_NET_TAP
 	bool "tap Ethernet driver"
 	depends on LINUX
